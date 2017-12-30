@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LifeLine.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,10 +13,14 @@ namespace LifeLine.Web
     {
         protected void Application_Start()
         {
+            
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            BloodDonorInitalizeDb db = new BloodDonorInitalizeDb();
+            System.Data.Entity.Database.SetInitializer(db);
         }
     }
 }
